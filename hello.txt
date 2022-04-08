@@ -1,1 +1,18 @@
-helloworld
+worldWin32平台配置
+VC配置属性：
+   常规：
+      MFC的使用：使用标准Windows库
+  C/C++：
+      常规：附加包含目录：..\wxlib\include ..\wxlib\debug\mswud
+      预处理器：WIN32；_DEBUG；__WXMSW__；__WXDEBUG__；_WINDOWS；WXUSINGDLL
+      代码生成：运行时库：MDD
+  链接器：
+      常规：附加库目录：..\wxlib\debug
+       输入：wxbase28ud.lib wxmsw28ud_core.lib wxmsw28ud_xrc.lib wxbase28ud_xml.lib wxmsw28ud_adv.lib wxmsw28ud_aui.lib wxmsw28ud_html.lib rpcrt4.lib winmm.lib comctl32.lib advapi32.lib oleacc.lib
+       系统：子系统：未设置、Windows (/SUBSYSTEM:WINDOWS)
+       高级：入口点：无
+       
+       WXUSINGDLL标签表明wx是用动态库的方式引入。MFC库是否引入，看个人的需求，基本上使用wx是不再用MFC的。
+附加库中尝试时可以将所有的..\wxlib\*.lib加入进来，然后分别根据使用情况分别剔除某些lib文件。
+关于运行时库，最好要和编译wx库保持一致（这里默认MDD），不然可能出现编译错误。
+最后运行成果时，别忘了把*.dll文件也拷贝到可执行程序文件夹中去。
